@@ -3,6 +3,7 @@ package com.levelp.spring.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "consumer")
 public class Consumer {
     private int id;
     private String firstName;

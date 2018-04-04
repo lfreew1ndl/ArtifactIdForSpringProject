@@ -16,27 +16,22 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Autowired
     private ConsumerDAOImpl dao;
 
-    @Override
     public int add(Consumer consumer) {
         return dao.add(consumer);
     }
 
-    @Override
     public int remove(int id) {
         return dao.remove(id);
     }
 
-    @Override
     public int update(Consumer consumer) {
         return dao.update(consumer);
     }
 
-    @Override
     public Consumer get(int id) {
         return dao.get(id);
     }
 
-    @Override
     public List<Consumer> list() {
         return dao.list();
     }
