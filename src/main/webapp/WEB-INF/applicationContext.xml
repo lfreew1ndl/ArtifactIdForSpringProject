@@ -23,7 +23,4 @@
             </props>
         </property>
     </bean>
-
-    <bean id="consumerService" class="com.levelp.spring.service.consumer.ConsumerServiceImpl"/>
-
 </beans>
