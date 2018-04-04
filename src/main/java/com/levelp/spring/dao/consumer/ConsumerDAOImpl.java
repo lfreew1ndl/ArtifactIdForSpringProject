@@ -4,15 +4,19 @@ import com.levelp.spring.model.Consumer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+@Component
 public class ConsumerDAOImpl implements ConsumerDAO {
 
+    private final SessionFactory factory;
+
     @Autowired
-    SessionFactory factory;
+    public ConsumerDAOImpl(SessionFactory factory) {
+        this.factory = factory;
+    }
 
 
     @Override

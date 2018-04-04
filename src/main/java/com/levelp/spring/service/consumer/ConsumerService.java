@@ -1,8 +1,9 @@
 package com.levelp.spring.service.consumer;
 
 import com.levelp.spring.model.Consumer;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
+
 
 public interface ConsumerService {
     int add(Consumer consumer);

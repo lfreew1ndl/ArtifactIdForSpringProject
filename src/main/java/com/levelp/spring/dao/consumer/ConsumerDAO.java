@@ -1,8 +1,10 @@
 package com.levelp.spring.dao.consumer;
 
 import com.levelp.spring.model.Consumer;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 
 public interface ConsumerDAO {
     int add(Consumer consumer);

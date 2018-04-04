@@ -24,7 +24,6 @@
         </property>
     </bean>
 
-    <bean id="consumerDAO" class="com.levelp.spring.dao.consumer.ConsumerDAOImpl"/>
     <bean id="consumerService" class="com.levelp.spring.service.consumer.ConsumerServiceImpl"/>
 
 </beans>
