@@ -4,11 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "city")
 public class City {
     private int id;
     private String name;
-    private Collection<Calls> callsById;
-    private Collection<Calls> callsById_0;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -18,6 +17,14 @@ public class City {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Basic
@@ -48,23 +55,5 @@ public class City {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "cityByCityCodeWhoCall")
-    public Collection<Calls> getCallsById() {
-        return callsById;
-    }
-
-    public void setCallsById(Collection<Calls> callsById) {
-        this.callsById = callsById;
-    }
-
-    @OneToMany(mappedBy = "cityByCityCodeToWhomCall")
-    public Collection<Calls> getCallsById_0() {
-        return callsById_0;
-    }
-
-    public void setCallsById_0(Collection<Calls> callsById_0) {
-        this.callsById_0 = callsById_0;
     }
 }

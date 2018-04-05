@@ -3,6 +3,7 @@ package com.levelp.spring.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "queue")
 public class Queue {
     private int id;
     private String firstName;
@@ -14,6 +15,22 @@ public class Queue {
     private String apartment;
     private byte beneficiary;
     private Street streetByStreetId;
+
+    @Override
+    public String toString() {
+        return "Queue{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", streetId=" + streetId +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", apartment='" + apartment + '\'' +
+                ", beneficiary=" + beneficiary +
+                ", streetByStreetId=" + streetByStreetId +
+                '}';
+    }
 
     @Id
     @Column(name = "id", nullable = false)

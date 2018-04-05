@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "PhoneNumber")
 public class Phonenumber {
     private int id;
     private int number;
@@ -12,8 +13,6 @@ public class Phonenumber {
     private Byte interspace;
     private int phoneId;
     private int streetId;
-    private Collection<Consumer> consumersById;
-    private Collection<Payphones> payphonesById;
     private Number numberByNumber;
     private Phone phoneByPhoneId;
     private Street streetByStreetId;
@@ -107,6 +106,22 @@ public class Phonenumber {
     }
 
     @Override
+    public String toString() {
+        return "Phonenumber{" +
+                "id=" + id +
+                ", number=" + number +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", apartment=" + apartment +
+                ", interspace=" + interspace +
+                ", phoneId=" + phoneId +
+                ", streetId=" + streetId +
+                ", numberByNumber=" + numberByNumber +
+                ", phoneByPhoneId=" + phoneByPhoneId +
+                ", streetByStreetId=" + streetByStreetId +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + number;
@@ -116,24 +131,6 @@ public class Phonenumber {
         result = 31 * result + phoneId;
         result = 31 * result + streetId;
         return result;
-    }
-
-    @OneToMany(mappedBy = "phonenumberByPhoneNumberId")
-    public Collection<Consumer> getConsumersById() {
-        return consumersById;
-    }
-
-    public void setConsumersById(Collection<Consumer> consumersById) {
-        this.consumersById = consumersById;
-    }
-
-    @OneToMany(mappedBy = "phonenumberByPhoneNumberId")
-    public Collection<Payphones> getPayphonesById() {
-        return payphonesById;
-    }
-
-    public void setPayphonesById(Collection<Payphones> payphonesById) {
-        this.payphonesById = payphonesById;
     }
 
     @ManyToOne

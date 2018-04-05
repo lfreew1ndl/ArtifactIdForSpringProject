@@ -3,6 +3,7 @@ package com.levelp.spring.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "payphones")
 public class Payphones {
     private int id;
     private int phoneNumberId;
@@ -46,6 +47,15 @@ public class Payphones {
         int result = id;
         result = 31 * result + phoneNumberId;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Payphones{" +
+                "id=" + id +
+                ", phoneNumberId=" + phoneNumberId +
+                ", phonenumberByPhoneNumberId=" + phonenumberByPhoneNumberId +
+                '}';
     }
 
     @ManyToOne

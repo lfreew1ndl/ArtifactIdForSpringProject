@@ -4,12 +4,22 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "mtc")
 public class Mtc {
     private int id;
     private int atcId;
     private String name;
     private Atc atcByAtcId;
-    private Collection<Street> streetsById;
+
+    @Override
+    public String toString() {
+        return "Mtc{" +
+                "id=" + id +
+                ", atcId=" + atcId +
+                ", name='" + name + '\'' +
+                ", atcByAtcId=" + atcByAtcId +
+                '}';
+    }
 
     @Id
     @Column(name = "id", nullable = false)
@@ -73,12 +83,4 @@ public class Mtc {
         this.atcByAtcId = atcByAtcId;
     }
 
-    @OneToMany(mappedBy = "mtcByMtcId")
-    public Collection<Street> getStreetsById() {
-        return streetsById;
-    }
-
-    public void setStreetsById(Collection<Street> streetsById) {
-        this.streetsById = streetsById;
-    }
 }

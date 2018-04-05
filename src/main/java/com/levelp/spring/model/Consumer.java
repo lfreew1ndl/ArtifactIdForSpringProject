@@ -140,6 +140,23 @@ public class Consumer {
         return result;
     }
 
+
+    @Override
+    public String toString() {
+        return "Consumer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", balance=" + balance +
+                ", beneficiary=" + beneficiary +
+                ", phoneNumberId=" + phoneNumberId +
+                ", connected=" + connected +
+                ", phonenumberByPhoneNumberId=" + phonenumberByPhoneNumberId +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "PhoneNumber_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public Phonenumber getPhonenumberByPhoneNumberId() {

@@ -1,15 +1,19 @@
 package com.levelp.spring.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "number")
 public class Number {
     private int number;
-    private Collection<Phonenumber> phonenumbersByNumber;
+
+    @Override
+    public String toString() {
+        return "Number{" +
+                "number=" + number +
+                '}';
+    }
 
     @Id
     @Column(name = "Number", nullable = false)
@@ -38,12 +42,4 @@ public class Number {
         return number;
     }
 
-    @OneToMany(mappedBy = "numberByNumber")
-    public Collection<Phonenumber> getPhonenumbersByNumber() {
-        return phonenumbersByNumber;
-    }
-
-    public void setPhonenumbersByNumber(Collection<Phonenumber> phonenumbersByNumber) {
-        this.phonenumbersByNumber = phonenumbersByNumber;
-    }
 }

@@ -4,15 +4,29 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "street")
 public class Street {
     private int id;
     private String name;
     private int regionId;
     private int index;
     private int channels;
+
+    @Override
+    public String toString() {
+        return "Street{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", regionId=" + regionId +
+                ", index=" + index +
+                ", channels=" + channels +
+                ", mtcId=" + mtcId +
+                ", regionByRegionId=" + regionByRegionId +
+                ", mtcByMtcId=" + mtcByMtcId +
+                '}';
+    }
+
     private int mtcId;
-    private Collection<Phonenumber> phonenumbersById;
-    private Collection<Queue> queuesById;
     private Region regionByRegionId;
     private Mtc mtcByMtcId;
 
@@ -104,23 +118,6 @@ public class Street {
         return result;
     }
 
-    @OneToMany(mappedBy = "streetByStreetId")
-    public Collection<Phonenumber> getPhonenumbersById() {
-        return phonenumbersById;
-    }
-
-    public void setPhonenumbersById(Collection<Phonenumber> phonenumbersById) {
-        this.phonenumbersById = phonenumbersById;
-    }
-
-    @OneToMany(mappedBy = "streetByStreetId")
-    public Collection<Queue> getQueuesById() {
-        return queuesById;
-    }
-
-    public void setQueuesById(Collection<Queue> queuesById) {
-        this.queuesById = queuesById;
-    }
 
     @ManyToOne
     @JoinColumn(name = "Region_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)

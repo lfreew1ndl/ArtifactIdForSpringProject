@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
+@Table(name = "calls")
 public class Calls {
     private int id;
     private int whoCallNumber;
@@ -52,6 +53,20 @@ public class Calls {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Calls{" +
+                "id=" + id +
+                ", whoCallNumber=" + whoCallNumber +
+                ", toWhomCallNumber=" + toWhomCallNumber +
+                ", data=" + data +
+                ", cityCodeWhoCall=" + cityCodeWhoCall +
+                ", cityCodeToWhomCall=" + cityCodeToWhomCall +
+                ", cityByCityCodeWhoCall=" + cityByCityCodeWhoCall +
+                ", cityByCityCodeToWhomCall=" + cityByCityCodeToWhomCall +
+                '}';
     }
 
     @Basic

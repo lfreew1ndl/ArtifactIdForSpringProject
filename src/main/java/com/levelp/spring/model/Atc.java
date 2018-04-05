@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "atc")
 public class Atc {
     private int id;
     private String type;
-    private Collection<Mtc> mtcsById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -49,12 +49,11 @@ public class Atc {
         return result;
     }
 
-    @OneToMany(mappedBy = "atcByAtcId")
-    public Collection<Mtc> getMtcsById() {
-        return mtcsById;
-    }
-
-    public void setMtcsById(Collection<Mtc> mtcsById) {
-        this.mtcsById = mtcsById;
+    @Override
+    public String toString() {
+        return "Atc{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
