@@ -1,7 +1,5 @@
 package com.levelp.spring.service.phonenumber;
 
-import com.levelp.spring.dao.consumer.ConsumerDAOImpl;
-import com.levelp.spring.dao.phone.PhoneDAO;
 import com.levelp.spring.dao.phonenumber.PhonenumberDAOImpl;
 import com.levelp.spring.model.Consumer;
 import com.levelp.spring.model.Phonenumber;

@@ -23,11 +23,9 @@
     <div class="container-fluid">
         <div class="row" style="text-align: center;">
             <button class="col-sm-2 button6" id="t1" onclick="off2('t1')"  >АТС</button>
-            <button class="col-sm-2 button6" id="t2" onclick="off2('t2')"  >ATCType</button>
             <button class="col-sm-2 button6" id="t3" onclick="off2('t3')"  >Number</button>
             <button class="col-sm-2 button6" id="t4" onclick="off2('t4')"  >PhoneNumber</button>
             <button class="col-sm-2 button6" id="t5" onclick="off2('t5')"  >Consumer</button>
-            <button class="col-sm-2 button6" id="t6" onclick="off2('t6')"  >PhoneType</button>
             <button class="col-sm-2 button6" id="t7" onclick="off2('t7')"  >PayPhone</button>
             <button class="col-sm-2 button6" id="t8" onclick="off2('t8')"  >Queue</button>
             <button class="col-sm-2 button6" id="t9" onclick="off2('t9')"  >Street</button>
@@ -51,29 +49,8 @@
                     <c:forEach items="${mtcList}" var="mtc">
                         <tr>
                             <th>${mtc.id}</th>
-                            <td>${mtc.atcByAtcId.type}</td>
+                            <td>${mtc.atcType}</td>
                             <td>${mtc.name}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div style="display: none;" id="comp2">
-            <div >
-                <table class="table table-sm table-dark">
-                    <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">type</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${atcList}" var="atc">
-                        <tr>
-                            <th >${atc.id}</th>
-                            <td>${atc.type}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -118,11 +95,11 @@
                     <c:forEach items="${phonenumberList}" var="phoneNumber">
                         <tr>
                             <th>${phoneNumber.id}</th>
-                            <td>${phoneNumber.number}</td>
+                            <td>${phoneNumber.numberByNumber.number}</td>
                             <td>${phoneNumber.houseNumber}</td>
                             <td>${phoneNumber.apartment}</td>
                             <td>${phoneNumber.interspace}</td>
-                            <td>${phoneNumber.phoneByPhoneId.type}</td>
+                            <td>${phoneNumber.phoneType}</td>
                             <td>${phoneNumber.streetByStreetId.name}</td>
                         </tr>
                     </c:forEach>
@@ -158,7 +135,7 @@
                             <td>${consumer.age}</td>
                             <td>${consumer.balance}</td>
                             <td>${consumer.beneficiary}</td>
-                            <td>${consumer.phonenumberByPhoneNumberId.number}</td>
+                            <td>${consumer.phonenumberByPhoneNumberId.numberByNumber.number}</td>
                             <td>${consumer.connected}</td>
                         </tr>
                     </c:forEach>
@@ -167,26 +144,6 @@
             </div>
         </div>
 
-        <div style="display: none;" id="comp6">
-            <div >
-                <table class="table table-sm table-dark">
-                    <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">type</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${phoneList}" var="phoneType">
-                        <tr>
-                            <th>${phoneType.id}</th>
-                            <td>${phoneType.type}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
         <div style="display: none;" id="comp7">
             <div >

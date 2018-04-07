@@ -1,19 +1,12 @@
 package com.levelp.spring.model;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "number")
 public class Number {
     private int number;
-
-    @Override
-    public String toString() {
-        return "Number{" +
-                "number=" + number +
-                '}';
-    }
 
     @Id
     @Column(name = "Number", nullable = false)
@@ -41,5 +34,4 @@ public class Number {
     public int hashCode() {
         return number;
     }
-
 }

@@ -3,7 +3,6 @@ package com.levelp.spring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "consumer")
 public class Consumer {
     private int id;
     private String firstName;
@@ -12,7 +11,6 @@ public class Consumer {
     private int age;
     private int balance;
     private byte beneficiary;
-    private int phoneNumberId;
     private byte connected;
     private Phonenumber phonenumberByPhoneNumberId;
 
@@ -87,16 +85,6 @@ public class Consumer {
     }
 
     @Basic
-    @Column(name = "PhoneNumber_id", nullable = false)
-    public int getPhoneNumberId() {
-        return phoneNumberId;
-    }
-
-    public void setPhoneNumberId(int phoneNumberId) {
-        this.phoneNumberId = phoneNumberId;
-    }
-
-    @Basic
     @Column(name = "connected", nullable = false)
     public byte getConnected() {
         return connected;
@@ -117,7 +105,6 @@ public class Consumer {
         if (age != consumer.age) return false;
         if (balance != consumer.balance) return false;
         if (beneficiary != consumer.beneficiary) return false;
-        if (phoneNumberId != consumer.phoneNumberId) return false;
         if (connected != consumer.connected) return false;
         if (firstName != null ? !firstName.equals(consumer.firstName) : consumer.firstName != null) return false;
         if (lastName != null ? !lastName.equals(consumer.lastName) : consumer.lastName != null) return false;
@@ -135,30 +122,12 @@ public class Consumer {
         result = 31 * result + age;
         result = 31 * result + balance;
         result = 31 * result + (int) beneficiary;
-        result = 31 * result + phoneNumberId;
         result = 31 * result + (int) connected;
         return result;
     }
 
-
-    @Override
-    public String toString() {
-        return "Consumer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", sex='" + sex + '\'' +
-                ", age=" + age +
-                ", balance=" + balance +
-                ", beneficiary=" + beneficiary +
-                ", phoneNumberId=" + phoneNumberId +
-                ", connected=" + connected +
-                ", phonenumberByPhoneNumberId=" + phonenumberByPhoneNumberId +
-                '}';
-    }
-
     @ManyToOne
-    @JoinColumn(name = "PhoneNumber_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "PhoneNumber_id", referencedColumnName = "id", nullable = false)
     public Phonenumber getPhonenumberByPhoneNumberId() {
         return phonenumberByPhoneNumberId;
     }

@@ -1,10 +1,11 @@
 package com.levelp.spring.model;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "region")
 public class Region {
     private int id;
     private String name;
@@ -47,14 +48,5 @@ public class Region {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Region{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

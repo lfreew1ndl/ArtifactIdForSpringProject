@@ -3,34 +3,16 @@ package com.levelp.spring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "queue")
 public class Queue {
     private int id;
     private String firstName;
     private String lastName;
     private String sex;
     private int age;
-    private int streetId;
     private String houseNumber;
     private String apartment;
     private byte beneficiary;
     private Street streetByStreetId;
-
-    @Override
-    public String toString() {
-        return "Queue{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", sex='" + sex + '\'' +
-                ", age=" + age +
-                ", streetId=" + streetId +
-                ", houseNumber='" + houseNumber + '\'' +
-                ", apartment='" + apartment + '\'' +
-                ", beneficiary=" + beneficiary +
-                ", streetByStreetId=" + streetByStreetId +
-                '}';
-    }
 
     @Id
     @Column(name = "id", nullable = false)
@@ -83,16 +65,6 @@ public class Queue {
     }
 
     @Basic
-    @Column(name = "Street_id", nullable = false)
-    public int getStreetId() {
-        return streetId;
-    }
-
-    public void setStreetId(int streetId) {
-        this.streetId = streetId;
-    }
-
-    @Basic
     @Column(name = "houseNumber", nullable = false, length = 45)
     public String getHouseNumber() {
         return houseNumber;
@@ -131,7 +103,6 @@ public class Queue {
 
         if (id != queue.id) return false;
         if (age != queue.age) return false;
-        if (streetId != queue.streetId) return false;
         if (beneficiary != queue.beneficiary) return false;
         if (firstName != null ? !firstName.equals(queue.firstName) : queue.firstName != null) return false;
         if (lastName != null ? !lastName.equals(queue.lastName) : queue.lastName != null) return false;
@@ -149,7 +120,6 @@ public class Queue {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + age;
-        result = 31 * result + streetId;
         result = 31 * result + (houseNumber != null ? houseNumber.hashCode() : 0);
         result = 31 * result + (apartment != null ? apartment.hashCode() : 0);
         result = 31 * result + (int) beneficiary;
@@ -157,7 +127,7 @@ public class Queue {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Street_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "Street_id", referencedColumnName = "id", nullable = false)
     public Street getStreetByStreetId() {
         return streetByStreetId;
     }

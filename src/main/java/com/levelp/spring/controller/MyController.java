@@ -2,14 +2,12 @@ package com.levelp.spring.controller;
 
 
 import com.levelp.spring.model.Consumer;
-import com.levelp.spring.service.atc.AtcService;
 import com.levelp.spring.service.calls.CallsService;
 import com.levelp.spring.service.city.CityService;
 import com.levelp.spring.service.consumer.ConsumerService;
 import com.levelp.spring.service.mtc.MtcService;
 import com.levelp.spring.service.number.NumberService;
 import com.levelp.spring.service.payphones.PayphonesService;
-import com.levelp.spring.service.phone.PhoneService;
 import com.levelp.spring.service.phonenumber.PhonenumberService;
 import com.levelp.spring.service.queue.QueueService;
 import com.levelp.spring.service.region.RegionService;
@@ -30,9 +28,6 @@ public class MyController {
     ConsumerService consumerService;
 
     @Autowired
-    AtcService atcService;
-
-    @Autowired
     CallsService callsService;
 
     @Autowired
@@ -46,9 +41,6 @@ public class MyController {
 
     @Autowired
     PayphonesService payphonesService;
-
-    @Autowired
-    PhoneService phoneService;
 
     @Autowired
     PhonenumberService phonenumberService;
@@ -66,13 +58,11 @@ public class MyController {
     @RequestMapping(value = "/hello")
     public String hello(ModelMap map){
         map.addAttribute(consumerService.list());
-        map.addAttribute(atcService.list());
         map.addAttribute(callsService.list());
         map.addAttribute(cityService.list());
         map.addAttribute(mtcService.list());
         map.addAttribute(numberService.list());
         map.addAttribute(payphonesService.list());
-        map.addAttribute(phoneService.list());
         map.addAttribute(phonenumberService.list());
         map.addAttribute(queueService.list());
         map.addAttribute(regionService.list());

@@ -4,14 +4,11 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "calls")
 public class Calls {
     private int id;
     private int whoCallNumber;
     private int toWhomCallNumber;
     private Date data;
-    private int cityCodeWhoCall;
-    private int cityCodeToWhomCall;
     private City cityByCityCodeWhoCall;
     private City cityByCityCodeToWhomCall;
 
@@ -56,40 +53,6 @@ public class Calls {
     }
 
     @Override
-    public String toString() {
-        return "Calls{" +
-                "id=" + id +
-                ", whoCallNumber=" + whoCallNumber +
-                ", toWhomCallNumber=" + toWhomCallNumber +
-                ", data=" + data +
-                ", cityCodeWhoCall=" + cityCodeWhoCall +
-                ", cityCodeToWhomCall=" + cityCodeToWhomCall +
-                ", cityByCityCodeWhoCall=" + cityByCityCodeWhoCall +
-                ", cityByCityCodeToWhomCall=" + cityByCityCodeToWhomCall +
-                '}';
-    }
-
-    @Basic
-    @Column(name = "cityCodeWhoCall", nullable = false)
-    public int getCityCodeWhoCall() {
-        return cityCodeWhoCall;
-    }
-
-    public void setCityCodeWhoCall(int cityCodeWhoCall) {
-        this.cityCodeWhoCall = cityCodeWhoCall;
-    }
-
-    @Basic
-    @Column(name = "cityCodeToWhomCall", nullable = false)
-    public int getCityCodeToWhomCall() {
-        return cityCodeToWhomCall;
-    }
-
-    public void setCityCodeToWhomCall(int cityCodeToWhomCall) {
-        this.cityCodeToWhomCall = cityCodeToWhomCall;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -99,8 +62,6 @@ public class Calls {
         if (id != calls.id) return false;
         if (whoCallNumber != calls.whoCallNumber) return false;
         if (toWhomCallNumber != calls.toWhomCallNumber) return false;
-        if (cityCodeWhoCall != calls.cityCodeWhoCall) return false;
-        if (cityCodeToWhomCall != calls.cityCodeToWhomCall) return false;
         if (data != null ? !data.equals(calls.data) : calls.data != null) return false;
 
         return true;
@@ -112,13 +73,11 @@ public class Calls {
         result = 31 * result + whoCallNumber;
         result = 31 * result + toWhomCallNumber;
         result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + cityCodeWhoCall;
-        result = 31 * result + cityCodeToWhomCall;
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "cityCodeWhoCall", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "cityCodeWhoCall", referencedColumnName = "id", nullable = false)
     public City getCityByCityCodeWhoCall() {
         return cityByCityCodeWhoCall;
     }
@@ -128,7 +87,7 @@ public class Calls {
     }
 
     @ManyToOne
-    @JoinColumn(name = "cityCodeToWhomCall", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "cityCodeToWhomCall", referencedColumnName = "id", nullable = false)
     public City getCityByCityCodeToWhomCall() {
         return cityByCityCodeToWhomCall;
     }

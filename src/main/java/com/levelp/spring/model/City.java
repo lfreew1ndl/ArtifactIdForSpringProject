@@ -1,10 +1,11 @@
 package com.levelp.spring.model;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "city")
 public class City {
     private int id;
     private String name;
@@ -17,14 +18,6 @@ public class City {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 
     @Basic

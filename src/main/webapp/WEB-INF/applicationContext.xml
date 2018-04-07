@@ -27,13 +27,11 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.levelp.spring.model.Consumer</value>
-                <value>com.levelp.spring.model.Atc</value>
                 <value>com.levelp.spring.model.Calls</value>
                 <value>com.levelp.spring.model.City</value>
                 <value>com.levelp.spring.model.Mtc</value>
                 <value>com.levelp.spring.model.Number</value>
                 <value>com.levelp.spring.model.Payphones</value>
-                <value>com.levelp.spring.model.Phone</value>
                 <value>com.levelp.spring.model.Phonenumber</value>
                 <value>com.levelp.spring.model.Queue</value>
                 <value>com.levelp.spring.model.Region</value>
@@ -44,5 +42,9 @@
     <mvc:resources mapping="/resources/**" location="/resources/theme/"
                    cache-period="31556926"/>
     <mvc:annotation-driven />
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
 </beans>

@@ -1,25 +1,12 @@
 package com.levelp.spring.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
-@Table(name = "mtc")
 public class Mtc {
     private int id;
-    private int atcId;
     private String name;
-    private Atc atcByAtcId;
-
-    @Override
-    public String toString() {
-        return "Mtc{" +
-                "id=" + id +
-                ", atcId=" + atcId +
-                ", name='" + name + '\'' +
-                ", atcByAtcId=" + atcByAtcId +
-                '}';
-    }
+    private ATCType atcType;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -27,18 +14,18 @@ public class Mtc {
         return id;
     }
 
+    @Column(name = "ATCType")
+    @Enumerated(EnumType.STRING)
+    public ATCType getAtcType() {
+        return atcType;
+    }
+
+    public void setAtcType(ATCType atcType) {
+        this.atcType = atcType;
+    }
+
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "ATC_id", nullable = false)
-    public int getAtcId() {
-        return atcId;
-    }
-
-    public void setAtcId(int atcId) {
-        this.atcId = atcId;
     }
 
     @Basic
@@ -59,7 +46,6 @@ public class Mtc {
         Mtc mtc = (Mtc) o;
 
         if (id != mtc.id) return false;
-        if (atcId != mtc.atcId) return false;
         if (name != null ? !name.equals(mtc.name) : mtc.name != null) return false;
 
         return true;
@@ -68,19 +54,7 @@ public class Mtc {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + atcId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "ATC_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
-    public Atc getAtcByAtcId() {
-        return atcByAtcId;
-    }
-
-    public void setAtcByAtcId(Atc atcByAtcId) {
-        this.atcByAtcId = atcByAtcId;
-    }
-
 }
